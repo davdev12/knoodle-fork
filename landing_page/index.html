@@ -1,14 +1,14 @@
 <!doctype html>
-  <!-- Welcome to my Open Source Code. I am Kaier and I am a beginner, lol. so don't judge me. -->
+  <!-- Welcome to my Open Source Code. I am Kaier, and I am a beginner, lol. so don't judge me. -->
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Knoodle — Learn it. Know it. Knoodle it.</title>
-  
+
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
-  
+
   <!-- font (very important)-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +72,7 @@
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      background-image: 
+      background-image:
         radial-gradient(circle at 20% 10%, rgba(221, 120, 96, 0.04) 0, transparent 40%),
         radial-gradient(circle at 80% 80%, rgba(127, 176, 105, 0.04) 0, transparent 40%),
         linear-gradient(rgba(177, 202, 210, 0.08) 1px, transparent 1px);
@@ -376,10 +376,10 @@
       font-weight: 700;
     }
 
-    .toast.show {
+    /*.toast.show {
       opacity: 1;
       transform: translate(-50%, 0);
-    }
+    }*/
 
     /* --- RESPONSIVE --- */
     @media (max-width: 600px) {
@@ -413,12 +413,12 @@
   </header>
 
   <main class="app">
-    
+
     <!-- hero -->
     <section class="hero">
       <h1>Learn it. Know it.<br><span>Knoodle it.</span></h1>
       <p>Explore new ideas, discover what interests you, and make learning your own — one step at a time.</p>
-      
+
       <button class="cta-button" id="waitlist-btn">
         Request Beta Access
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -496,7 +496,7 @@
         <p>Explore history, geography, cultures, and society to discover how people live, how the world changed, and why it matters today.</p>
       </div>
 
-      <!-- Games & Problem Solving -->
+      <!-- Games & Problem-Solving -->
       <div class="feature-card">
         <div class="feature-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -507,7 +507,7 @@
             <rect x="2" y="6" width="20" height="12" rx="2"></rect>
           </svg>
         </div>
-        <h3>Games & Problem Solving</h3>
+        <h3>Games & Problem-Solving</h3>
         <p>Put your brain to the test with puzzles, riddles, memory challenges, and strategy games that make learning feel like play.</p>
       </div>
     </div>
@@ -516,7 +516,7 @@
     <div class="vision-panel">
       <h2>Quality over quantity.</h2>
       <p>Most study apps count what you've flipped. Knoodle counts what you actually <em>know</em>. It tracks your confidence, separates "shaky" memory from solid knowledge, and builds your progress around honest numbers.</p>
-      
+
       <h2>Open Source. Real Brand.</h2>
       <p>Knoodle is being built in the open by Kaier. The core learning engine is open-source (BSD 3-Clause), while the brand and future hosted app remain private. It's a student project growing into a real platform, one feature at a time.</p>
     </div>
@@ -527,7 +527,7 @@
   <footer>
     <div>&copy; 2026 Kaier Chang. All rights reserved.</div>
     <div>
-      Released under the <a href="https://github.com/kaier99percent/knoodle/blob/main/LICENSE" target="_blank">BSD 3-Clause License</a>. 
+      Released under the <a href="https://github.com/kaier99percent/knoodle/blob/main/LICENSE" target="_blank">BSD 3-Clause License</a>.
       Knoodle, the mascot, and logo are trademarks — <a href="https://github.com/kaier99percent/knoodle/blob/main/TRADEMARKS.md" target="_blank">see here</a>.
     </div>
   </footer>
@@ -537,12 +537,12 @@
   <script>
     // Wait until the DOM is fully loaded before running any scripts
     document.addEventListener('DOMContentLoaded', function() {
-      
+
       // --- theme logic ---
-      var themeToggle = document.getElementById('theme-toggle');
-      var iconMoon = document.getElementById('icon-moon');
-      var iconSun = document.getElementById('icon-sun');
-      var root = document.documentElement;
+      const themeToggle = document.getElementById('theme-toggle');
+      const iconMoon = document.getElementById('icon-moon');
+      const iconSun = document.getElementById('icon-sun');
+      const root = document.documentElement;
 
       // Safe function to update icons (lol, shoutout to my friend he helped me a lot)
       function updateIcon(theme) {
@@ -557,9 +557,9 @@
       }
 
       // Determine initial theme (wrapped in try/catch to prevent crashes if localStorage is blocked)
-      var initialTheme = 'light';
+      let initialTheme = 'light';
       try {
-        var savedTheme = localStorage.getItem('knoodle-theme');
+        const savedTheme = localStorage.getItem('knoodle-theme');
         if (savedTheme) {
           initialTheme = savedTheme;
         } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -568,19 +568,19 @@
       } catch (e) {
         console.warn("Local storage is blocked, using default theme.");
       }
-      
+
       root.setAttribute('data-theme', initialTheme);
       updateIcon(initialTheme);
 
       // Toggle theme on click
       if (themeToggle) {
         themeToggle.addEventListener('click', function() {
-          var currentTheme = root.getAttribute('data-theme') || 'light';
-          var newTheme = currentTheme === 'light' ? 'dark' : 'light';
-          
+          const currentTheme = root.getAttribute('data-theme') || 'light';
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
           root.setAttribute('data-theme', newTheme);
           updateIcon(newTheme);
-          
+
           try {
             localStorage.setItem('knoodle-theme', newTheme);
           } catch (e) {
@@ -590,22 +590,22 @@
       }
 
       // --- request beta ---
-      var waitlistBtn = document.getElementById('waitlist-btn');
-      var toast = document.getElementById('toast');
-      var toastTimer;
+      const waitlistBtn = document.getElementById('waitlist-btn');
+      let toast = document.getElementById('toast');
+      let toastTimer;
 
       if (waitlistBtn && toast) {
         waitlistBtn.addEventListener('click', function() {
           toast.textContent = "The beta is currently in work. Follow the GitHub repo or join the discord for updates!";
           toast.classList.add('show');
-          
+
           clearTimeout(toastTimer);
           toastTimer = setTimeout(function() {
             toast.classList.remove('show');
           }, 3500);
         });
       }
-      
+
     });
   </script>
 </body>
