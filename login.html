@@ -24,7 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* --- THEME VARIABLES (Matched to Knoodle) --- */
+    /* --- Theme --- */
     :root[data-theme="light"] {
       --bg: #fef8f0; --surface: #fffdf8; --text-main: #4a3f38;
       --text-muted: #9b8877; --border: #f0e4d4; --primary: #dd7860;
@@ -214,7 +214,7 @@
 <body>
   <main class="card">
     
-    <!-- Theme Toggle -->
+    <!-- Theme toggle -->
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
       <svg id="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       <svg id="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -235,7 +235,7 @@
 
     <form id="authForm">
       
-      <!-- NEW FIELDS -->
+      <!-- NEW FIELDSssss -->
       <div id="signupFields" hidden>
         <label for="username">Username</label>
         <input
@@ -259,7 +259,7 @@
           autocomplete="nickname"
         >
       </div>
-      <!-- END NEW FIELDS -->
+      <!-- END new field -->
 
       <label for="email">Email address</label>
       <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
@@ -274,12 +274,12 @@
     <a class="back" href="index.html">← Back to Knoodle</a>
   </main>
 
-  <!-- SUPABASE LIBRARIES -->
+  <!-- SUPABASE  -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase.js"></script>
 
   <script>
-    // --- THEME LOGIC ---
+    // --- Theme logic ---
     var themeToggle = document.getElementById('theme-toggle');
     var iconMoon = document.getElementById('icon-moon');
     var iconSun = document.getElementById('icon-sun');
@@ -299,7 +299,7 @@
       try { localStorage.setItem('knoodle-theme', newTheme); } catch (e) {}
     });
 
-    // --- AUTH LOGIC ---
+    // --- Auth logiccc ---
     const form = document.getElementById("authForm");
     const loginTab = document.getElementById("loginTab");
     const signupTab = document.getElementById("signupTab");
@@ -327,7 +327,7 @@
       passwordInput.autocomplete = isLogin ? "current-password" : "new-password";
       message.textContent = "";
       
-      // SHOW/HIDE FIELDS
+      // show hide
       document.getElementById("signupFields").hidden = isLogin;
 
       document.getElementById("username").required = !isLogin;
@@ -337,7 +337,7 @@
     loginTab.addEventListener("click", () => setMode("login"));
     signupTab.addEventListener("click", () => setMode("signup"));
 
-    // --- CHECK URL PARAMETERS ---
+    // --- CHECK url ---
     const params = new URLSearchParams(window.location.search);
 
     if (params.get("mode") === "signup") {
@@ -400,9 +400,13 @@
 
           if (error) throw error;
 
-          message.textContent = "You're logged in! Redirecting...";
-          message.style.color = "var(--success-text)";
-          // Optional: window.location.href = "index.html";
+message.textContent = "You're logged in! Redirecting...";
+message.style.color = "var(--primary)";
+
+setTimeout(() => {
+  window.location.href = "app.html";
+}, 1000);
+
         }
       } catch (error) {
         message.textContent = error.message || "Something went wrong. Please try again.";
