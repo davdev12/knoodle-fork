@@ -1,48 +1,63 @@
 # Knoodle
-<img width="885" height="373" alt="image" src="https://github.com/user-attachments/assets/dfff9570-112d-4d1b-9b3e-516194d547bb" />
+<img width="595" height="450" alt="截屏2026-10-24 19 09 35" src="https://github.com/user-attachments/assets/b95389ae-9b8a-4000-b34e-1fcd620ef70e" />
 
-# **Knoodle — The Learning Platform**
+# Knoodle — The Learning Platform
 *Learn it. Know it. Knoodle it.*
 
-Knoodle is a learning platform built on one belief: collecting information is not the same as knowing it. Most study apps count what you've seen. Knoodle counts what you actually remember — and it's honest about the difference.
-That principle isn't limited to vocabulary. It applies to everything worth learning: a French word, a physics formula, a historical date, a programming concept, the stages of cell division, the causes of World War I, a guitar chord, a medical term. Any piece of knowledge that can be expressed as a question and an answer is something Knoodle should be able to teach.
+“Education is not the learning of facts, but the training of the mind to think.” — Often attributed to Albert Einstein
 
-# The problem
+Knoodle is built around a simple idea: learning something should mean you actually know it, not that you've spent hours staring at it.
 
-Every learner has been here: you've got material to learn — a vocabulary list, a chapter of notes, a worksheet, a documentation page — and you study it by rereading, highlighting, or flipping through flashcards. You finish feeling productive. A week later, most of it is gone.
-The apps that are supposed to help have optimized for the wrong number. They count cards flipped, streaks maintained, minutes logged. None of those numbers tell you whether a piece of knowledge will still be there when you need it. They measure activity, not understanding.
-Knoodle takes the opposite approach. It assumes you want to know something, not to complete something. That single assumption changes how the whole platform is built — from how it tracks progress, to how it handles confidence, to how it refuses to flatter you with numbers that don't mean anything.
+We don't care if you spend ten minutes or three hours in the app. We don't want you to open Knoodle every day just to keep a number going. We want you to leave knowing something you didn't know before.
 
-# The vision: one platform, many modules
+Think of Knoodle like a delivery service for knowledge. We prepare the lessons, give you the tools to practise, and help you remember what you've learned. The goal isn't to keep you inside the app. It's to get the knowledge into your brain, where it belongs.
 
-Knoodle is designed as a modular learning platform, not a single-purpose app.
-Each subject area is a module — a way of organizing, presenting, and testing a particular kind of knowledge. The card model, the study engine, the progress tracking, and the review system are all shared. What changes between modules is the shape of the knowledge and the types of exercises that make sense for it.
+## Learning, not endless grinding
 
-# The modules Knoodle is designed to support:
+A lot of learning apps focus on daily tasks, streaks, points, and keeping you coming back. Some of these features can be fun, and Knoodle has a streak system too. We'll explain how ours works when version 1.0 arrives.
 
-Languages — vocabulary, phrases, grammar patterns, translations in both directions, pronunciation, example sentences. This is the module currently in development and the first one going live.
+But those things aren't the reason Knoodle exists. We don't want you to finish a lesson just to collect a reward and forget everything five minutes later. We'd rather you learn one thing properly than rush through twenty lessons without remembering much.
 
-School subjects — biology, chemistry, physics, geography, history. Definitions, processes, formulas, dates, terminology. Cards can hold diagrams, sequences, and cause-and-effect relationships, not just word pairs.
+We can learn from what other platforms do well, as well as where they fall short. Knoodle is our attempt to do things differently, with your actual learning at the centre.
 
-Science and experiments — hypotheses, procedures, observations, conclusions. Learning the method of an experiment, not just its result. Ideal for lab preparation and understanding why something works.
+## One platform, many subjects
 
-Coding and technical knowledge — language syntax, concepts, patterns, algorithms, terminology. "What does this function return?" "What's the difference between these two approaches?" "What does this error mean?" Programming is full of knowledge that benefits from active recall, and almost no study app treats it that way.
+Knoodle starts with languages, but the idea doesn't stop at vocabulary. The platform is designed to grow into school subjects, science, coding and technology, and other areas of knowledge.
 
-Personal study material — anything from a book, worksheet, lecture, or note you want to turn into something learnable. The eventual photo-import system is built for this: take a picture of a page, get structured cards back, fix anything wrong, start studying.
+You should also be able to bring your own material, whether it's vocabulary from a textbook, notes from class, or something you've been studying on your own. Over time, we want to make turning that material into useful exercises much easier.
 
-Ready-made topics — guided lessons on specific subjects that you can start immediately, without preparing anything yourself. Choose a topic, learn it through explanation and exercises, and get a personal deck built automatically from the parts you struggled with.
+You choose what you want to learn. Knoodle can recommend topics and suggest what to practise next, but you don't have to follow every recommendation. It's your learning, and you should be in control of it.
 
-The goal isn't to be a flashcard app with extra categories. It's to be a platform where any kind of knowledge has a natural home — and where the learning methods adapt to what's being learned.
+## Progress that actually means something
 
-# What makes Knoodle different
+We aren't trying to measure how much time you spend learning. Time spent in an app doesn't automatically mean progress.
 
-It's built around knowing, not completing. Progress numbers are small, slow, and honest. A word isn't "learned" because you flipped it once. A concept isn't "mastered" because you got it right while it was fresh. Knoodle tracks what you can still produce days later, and it will tell you when the answer is "not much."
-Confidence is a first-class feature. Every correct answer is not equal. There's a difference between knowing something cold and having memorized the answer pattern. Knoodle asks. It separates sure answers from shaky ones, and it shows you the shaky ones as your real study list — the things most likely to fail you when it matters.
+What matters is what you remember, what you understand, and what you still need to practise. Getting an answer right once isn't the same as knowing it a week later. Knoodle is being built to help you recognise that difference and focus on the things you haven't fully learned yet.
 
-Modules share a foundation. Adding a new subject doesn't mean building a new app. The card model, study engine, and progress system already generalize. A chemistry module and a coding module and a language module all sit on the same honest foundation, with different exercise types layered on top.
+You don't need a thousand hours in Knoodle. You need to learn something worth remembering.
 
-User control, always. Nothing gets saved silently. Uncertain imports are marked uncertain. AI-generated content is labeled as AI-generated. You can edit, correct, and delete anything. The app has opinions about learning methods, but it never overrides your judgment about your own material.
+## Your account and your privacy
 
-Local-first and private. Your decks and progress live in your own browser. No account required, no server receiving your data, no analytics. Cloud sync, when it comes, will be opt-in — not the price of entry.
+Starting with our current version, you'll need to log in with a valid email address so your progress can be saved. Your data is stored securely using Supabase.
 
-*Zero-cost by design. No paid AI APIs, no required backend, no subscription to study. The core experience works offline on any modern browser. When smarter features arrive, they will never be required for the basics to work.*
+We don't have access to your password in readable form. We can see your email address, username, nickname, and your progress in Knoodle. We use that information to provide your account and keep track of your learning.
+
+## What about AI?
+
+AI is a big topic in technology, but we don't believe every app needs to use it for everything.
+
+Right now, no AI is being used to write Knoodle's code, and no features or learning content in the app are AI-generated. We're building the platform ourselves. AI might become useful for certain features in the future, but we won't add it just because it's popular.
+
+If we ever introduce AI-powered features, we'll make it clear what they do and why they're useful. The point is to improve learning, not to add AI for the sake of saying we have it.
+
+## Free means free
+
+Knoodle is 100% free. No premium subscription, no ads, no energy system that stops you from learning when you've run out. You shouldn't have to pay or wait just to continue studying.
+
+We're still in beta, so things will change, features will improve, and not everything planned for the future is available yet. We're building Knoodle step by step, learning from mistakes along the way.
+
+Our goal isn't to make you dependent on an app. It's to help you gain knowledge you can actually use, whether you're studying for school, learning a new skill, or exploring something simply because you're curious.
+
+**We don't want you to spend your life learning inside Knoodle. We want you to take what you've learned and use it outside.**
+
+That's Knoodle.
