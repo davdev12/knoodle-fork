@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Knoodle</title>
+
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <!-- Knoodle Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- THEME VARIABLES --- */
+    :root[data-theme="light"] {
+      --bg: #fef8f0; --surface: #fffdf8; --text-main: #4a3f38;
+      --text-muted: #9b8877; --border: #f0e4d4; --primary: #dd7860;
+      --primary-hover: #b85a44; --primary-light: #fce8dc; --icon-border: #e8c9b8;
+      --card-shadow: 0 6px 20px rgba(200, 140, 100, 0.08);
+      --btn-text: #ffffff;
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #1a1816; --surface: #24211e; --text-main: #f0ebe1;
+      --text-muted: #9c9691; --border: #3a342f; --primary: #e68b73;
+      --primary-hover: #f2a38d; --primary-light: #3a2a24; --icon-border: #4a3830;
+      --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      --btn-text: #1a1816;
+    }
+
+    :root {
+      --radius-a: 16px 20px 18px 22px;
+      --radius-b: 20px 16px 22px 18px;
+      --radius-c: 18px 22px 16px 20px;
+    }
+
+    * { 
+      box-sizing: border-box; margin: 0; padding: 0; 
+      transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    body {
+      font-family: "Nunito", system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      background-image: 
+        radial-gradient(circle at 20% 10%, rgba(221, 120, 96, 0.03) 0, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(127, 176, 105, 0.03) 0, transparent 40%),
+        linear-gradient(rgba(177, 202, 210, 0.06) 1px, transparent 1px);
+      background-size: auto, auto, 100% 34px;
+    }
+
+    /* --- TOP BAR --- */
+    .topbar {
+      height: 70px;
+      padding: 0 max(20px, calc((100vw - 800px) / 2));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(254, 248, 240, 0.9);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+    :root[data-theme="dark"] .topbar { background: rgba(26, 24, 22, 0.9); }
+
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--text-main); font-weight: 850; font-size: 22px;
+      text-decoration: none;
+    }
+    .brand img { width: 36px; height: 36px; border-radius: 8px; }
+
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+
+    .back-link {
+      color: var(--primary); text-decoration: none; font-weight: 700; font-size: 14px;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .theme-toggle {
+      background: var(--surface); border: 1.5px solid var(--border); color: var(--text-main);
+      width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
+    }
+    .theme-toggle:hover { border-color: var(--primary); color: var(--primary); transform: rotate(15deg); }
+
+    /* --- CONTENT LAYOUT --- */
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px 80px;
+    }
+
+    .document-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-b);
+      padding: 50px;
+      box-shadow: var(--card-shadow);
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 850;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+
+    .last-updated {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1.5px dashed var(--border);
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 850;
+      color: var(--text-main);
+      margin-top: 40px;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    ul {
+      margin-bottom: 20px;
+      padding-left: 24px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    strong {
+      color: var(--text-main);
+      font-weight: 800;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    a:hover { text-decoration: underline; }
+
+    .contact-box {
+      background: var(--primary-light);
+      border: 1.5px dashed var(--icon-border);
+      border-radius: var(--radius-c);
+      padding: 24px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .contact-box p { margin-bottom: 0; color: var(--text-main); }
+    .contact-box strong { display: block; font-size: 20px; margin-top: 5px; }
+
+    @media (max-width: 600px) {
+      .document-card { padding: 30px 20px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 20px; }
+      h3 { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img src="icon.png" alt="Knoodle">
+      <span>Knoodle</span>
+    </a>
+    <div class="nav-right">
+      <a href="index.html" class="back-link">← Back to Home</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="container">
+    <article class="document-card">
+      
+      <h1>Knoodle Privacy Policy</h1>
+      <p class="last-updated">Last updated: October 24, 2026</p>
+
+      <p>At Knoodle, we believe learning should be about gaining knowledge, not spending as much time as possible inside an app. The same principle applies to your personal data. We only want to use information that is needed to provide the learning experience, save your progress, and keep your account working.</p>
+
+      <p>This Privacy Policy explains how Knoodle collects, stores, uses, and protects your information. It also explains what control you have over your data, including how you can permanently delete your account.</p>
+
+      <p>Knoodle is currently in beta. Features and technical details may change as development continues, but privacy and responsible data handling remain important parts of the project.</p>
+
+      <p>Please read this policy carefully so you understand how your information is handled when you use Knoodle.</p>
+
+      <h2>1. About Knoodle</h2>
+      <p>Knoodle is a free learning platform designed to help people learn and remember knowledge. It starts with language learning and is intended to expand into other areas, such as school subjects, science, coding, technology, and personal study material.</p>
+      <p>To provide its current online features, Knoodle uses Supabase for authentication and cloud data storage. This allows users to create accounts and access their saved learning progress.</p>
+      <p>Knoodle is developed independently and is not intended to sell user information or use personal data as an advertising product.</p>
+      
+      <p>Our principles are straightforward:</p>
+      <ul>
+        <li>Your information should only be used for legitimate purposes connected to the service.</li>
+        <li>Your private learning material should remain private.</li>
+        <li>Your password should not be accessible to Knoodle's developers in readable form.</li>
+        <li>You should have control over your account and saved information.</li>
+        <li>You should be able to delete your account and associated data through the app.</li>
+        <li>The basic learning experience should remain free.</li>
+      </ul>
+      <p>This policy applies to the Knoodle application, its account system, and the associated services used to provide its features.</p>
+
+      <h2>2. Who is responsible for your data?</h2>
+      <p>Knoodle is an independently developed project. For questions about your personal information, account deletion, or this Privacy Policy, you can contact:</p>
+      <p><strong>Email:</strong> <a href="mailto:kaier.chang@proton.me">kaier.chang@proton.me</a></p>
+      <p>You can use this address to ask questions about your data, request assistance with your privacy rights, or report a concern about how your information is handled.</p>
+      <p>For the purposes of applicable data protection law, the person or organisation operating Knoodle is responsible for determining why and how personal information is processed. Supabase provides infrastructure and related services used by Knoodle.</p>
+      <p>Where applicable, the rights and obligations of the parties are determined by the relevant data protection legislation and the actual services being provided.</p>
+
+      <h2>3. What information does Knoodle collect?</h2>
+      <p>Knoodle collects information needed to operate your account and provide its learning features. The exact information stored depends on which features you use.</p>
+
+      <h3>3.1 Account information</h3>
+      <p>When you register, you need to provide a valid email address. Your account may also contain:</p>
+      <ul>
+        <li>Your email address.</li>
+        <li>Your username.</li>
+        <li>Your nickname or display name.</li>
+        <li>An internal account identifier used to associate information with your account.</li>
+        <li>Authentication-related information managed by Supabase Auth.</li>
+      </ul>
+      <p>Your email address helps identify your account and supports account-related functions. Your username and nickname help identify you within the application.</p>
+      <p>An internal account identifier allows Knoodle to associate your study decks and progress with the correct account without relying only on your email address.</p>
+
+      <h3>3.2 Learning information</h3>
+      <p>Knoodle is designed to remember your progress so you can continue learning where you left off.</p>
+      <p>Depending on the available features, this may include:</p>
+      <ul>
+        <li>Your vocabulary lists and study decks.</li>
+        <li>Questions, answers, definitions, and other study material you create.</li>
+        <li>Exercise answers and results.</li>
+        <li>Your learning progress.</li>
+        <li>Information about which material you have practised.</li>
+        <li>Information used to determine which topics may need further review.</li>
+        <li>Learning settings and preferences.</li>
+        <li>Other data necessary for the app's learning features.</li>
+      </ul>
+      <p>This information exists to make the platform useful. Without saved learning data, Knoodle would not be able to provide the same continuous learning experience across sessions.</p>
+      <p>Your study material is not intended to be publicly visible simply because it is stored online.</p>
+
+      <h3>3.3 Technical information</h3>
+      <p>The app and its infrastructure may process limited technical information needed to provide authentication, connect to the database, maintain sessions, and troubleshoot technical problems.</p>
+      <p>Depending on the services and configuration involved, technical information may include request metadata, timestamps, error details, or security-related logs.</p>
+      <p>Supabase may also process technical information as part of providing its infrastructure.</p>
+      <p>Knoodle does not claim that no technical information is ever processed. Rather, the intention is to avoid unnecessary tracking and collect only what is appropriate for operating the service.</p>
+
+      <h3>3.4 Information we do not intentionally collect</h3>
+      <p>Knoodle is not designed to collect your personal information for advertising profiles, sell your study habits, or build a profile of your interests for unrelated commercial purposes.</p>
+      <p>We do not ask for your password to be manually entered into a separate Knoodle database.</p>
+      <p>We also do not currently use AI to generate learning material or write the application's code.</p>
+
+      <h2>4. How passwords and authentication work</h2>
+      <p>Account security is particularly important because your account contains your saved learning progress.</p>
+      <p>Knoodle uses Supabase Auth to handle authentication. Password management is handled by the authentication service rather than by a separate password storage system built into Knoodle.</p>
+      <p>The Knoodle developers do not have access to your password in readable form. We do not store readable passwords in the application's own learning tables.</p>
+      <p>Authentication systems use security mechanisms to verify users without exposing their passwords as ordinary readable account information.</p>
+      <p>You should still protect your account by using a strong, unique password and keeping your login details private.</p>
+      <p>Do not share your password with anyone. If you believe someone else has accessed your account, contact us at <a href="mailto:kaier.chang@proton.me">kaier.chang@proton.me</a>.</p>
+      <p>Although we take account security seriously, the use of an authentication provider does not eliminate every possible security risk. You should contact us if you notice suspicious activity or believe your account has been compromised.</p>
+
+      <h2>5. Where is your data stored?</h2>
+      <p>Knoodle uses Supabase for authentication and cloud storage. The Supabase project used by Knoodle is hosted in Europe.</p>
+      <p>Your account information and learning data may therefore be stored and processed using Supabase's European infrastructure, subject to the project's configuration and the services involved.</p>
+      <p>Supabase is an external service provider. Its own systems, privacy practices, subprocessors, and service terms apply to the infrastructure it operates.</p>
+      <p>You can read more here:</p>
+      <ul>
+        <li>Supabase Privacy Policy: <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">https://supabase.com/privacy</a></li>
+        <li>Supabase Security: <a href="https://supabase.com/security" target="_blank" rel="noopener noreferrer">https://supabase.com/security</a></li>
+        <li>Supabase Documentation: <a href="https://supabase.com/docs" target="_blank" rel="noopener noreferrer">https://supabase.com/docs</a></li>
+      </ul>
+      <p>Using European hosting helps establish where the main project infrastructure is located, but it does not automatically mean that every technical operation or every service provider involved in the system is located exclusively in Europe.</p>
+      <p>Where personal information is transferred internationally, the relevant legal requirements and safeguards must be considered.</p>
+
+      <h2>6. How Knoodle uses your information</h2>
+      <p>We use your information for purposes connected to providing and maintaining the learning platform.</p>
+      <p>These purposes include:</p>
+      <p><strong>Providing your account.</strong> Your account information allows you to register, log in, and use Knoodle's account-based features.</p>
+      <p><strong>Saving your progress.</strong> Your learning information allows you to continue studying without having to start from the beginning every time you open the app.</p>
+      <p><strong>Providing learning features.</strong> Study decks, answers, results, and related information help the app provide the features you choose to use.</p>
+      <p><strong>Maintaining security.</strong> Authentication and access controls help prevent unauthorised access to accounts and private learning data.</p>
+      <p><strong>Maintaining and improving the service.</strong> Where necessary, technical information may help us identify errors, fix bugs, and keep the platform working correctly.</p>
+      <p><strong>Responding to requests.</strong> We may use relevant account information to help with account problems, privacy requests, or other support enquiries.</p>
+      <p>We do not need to track how many hours you spend studying to make Knoodle useful. The goal is to help you remember what you learn, rather than encourage you to spend as much time as possible inside the app.</p>
+      <p>We do not intend to use your learning history for unrelated advertising or sell it to third parties.</p>
+
+      <h2>7. Legal basis for processing</h2>
+      <p>Where the General Data Protection Regulation (GDPR) applies, personal information must be processed on a valid legal basis.</p>
+      <p>Depending on the particular processing activity, Knoodle may rely on the following legal bases:</p>
+      <p><strong>Performance of a contract.</strong> Certain information is necessary to create your account and provide the features you request, including saving and retrieving your learning progress.</p>
+      <p><strong>Legitimate interests.</strong> Some limited processing may be necessary to maintain the security, stability, and functionality of the platform, provided those interests do not override your rights and freedoms.</p>
+      <p><strong>Legal obligations.</strong> Certain information may need to be retained or disclosed where applicable law requires it.</p>
+      <p><strong>Consent.</strong> Where a particular feature or processing activity legally requires consent, it should be based on appropriate consent rather than assumed permission.</p>
+      <p>The applicable legal basis depends on the specific purpose. We aim to use personal information only where there is an appropriate reason to do so.</p>
+      <p>You may have the right to object to certain processing or withdraw consent where processing is based on consent. This does not make processing that already took place before withdrawal unlawful.</p>
+
+      <h2>8. Private data and database security</h2>
+      <p>Knoodle uses Row Level Security (RLS) in its Supabase database.</p>
+      <p>RLS allows database access to be restricted according to defined policies. In Knoodle's intended setup, these policies help ensure that users can access only the data they are authorised to access.</p>
+      <p>For example, a user should not be able to retrieve another user's private learning progress simply by changing an account identifier in a request.</p>
+      <p>RLS is an important part of the security setup, but it is not a guarantee by itself. Its effectiveness depends on the policies applied to each relevant table, the permissions granted to database roles, and how the application accesses the database.</p>
+      <p>Knoodle aims to follow security practices such as:</p>
+      <ul>
+        <li>Restricting access to private information.</li>
+        <li>Keeping administrative credentials and secret keys out of public client-side code.</li>
+        <li>Using authentication to identify the account making a request.</li>
+        <li>Applying appropriate database permissions and RLS policies.</li>
+        <li>Avoiding unnecessary exposure of personal information.</li>
+        <li>Correcting security issues when they are discovered.</li>
+      </ul>
+      <p>We want your private study material and progress to be available to you, not to other users.</p>
+
+      <h2>9. Who can access your information?</h2>
+      <p>Access to personal information is limited by the technical systems and permissions used to operate Knoodle.</p>
+
+      <h3>Knoodle's developers</h3>
+      <p>The developers may be able to see certain account information and learning data through the database or administrative tools available to them. This can include your email address, username, nickname, and progress information.</p>
+      <p>We do not have access to your password in readable form through the normal Supabase Auth setup.</p>
+      <p>Access to stored data is different from permission to use it for any purpose. We aim to use personal information only as needed to operate and maintain Knoodle, respond to legitimate requests, and meet applicable obligations.</p>
+
+      <h3>Supabase</h3>
+      <p>Supabase processes information to provide authentication, database hosting, and related services.</p>
+      <p>As with other infrastructure providers, access by authorised personnel or subprocessors may be possible under limited circumstances, subject to the provider's policies, security measures, and applicable law.</p>
+
+      <h3>Other users</h3>
+      <p>Your private account information and study data are not intended to be available to other users.</p>
+      <p>Database access policies and application permissions are used to restrict access. However, information you deliberately share publicly, if such a feature is introduced, may be visible to others according to that feature's design.</p>
+
+      <h2>10. We do not sell your data</h2>
+      <p>Knoodle is designed as a free learning platform, not as a service that earns money by selling user information.</p>
+      <p>We do not sell your email address, username, nickname, learning progress, or private study material to advertisers.</p>
+      <p>We do not intend to use your learning data to create advertising profiles or provide unrelated third parties with your personal information for their own marketing.</p>
+      <p>If information must be shared with a service provider to operate Knoodle, that processing is different from selling your information. Such providers may process data only within the scope of the services and applicable arrangements.</p>
+      <p>The fact that Knoodle is free does not mean your personal information is intended to be the price you pay.</p>
+
+      <h2>11. Cookies, sessions, and tracking</h2>
+      <p>Knoodle may use browser storage, cookies, or similar technologies where necessary to maintain login sessions and provide its features.</p>
+      <p>For example, authentication tokens or session information may be used to keep you signed in and allow the app to recognise your account.</p>
+      <p>These technologies are different from advertising trackers used to follow people across unrelated websites.</p>
+      <p>Knoodle does not intend to use third-party advertising trackers or behavioural advertising to monetise the platform.</p>
+      <p>The exact technologies used may change as the app develops. Where consent is legally required for a particular technology, it should be obtained before that technology is used.</p>
+
+      <h2>12. AI and automated processing</h2>
+      <p>Knoodle currently does not use AI to write its code or generate learning content.</p>
+      <p>There are no AI-powered learning features currently in the application.</p>
+      <p>We believe technology should be used when it genuinely improves the learning experience, not simply because a feature can be described as AI-powered.</p>
+      <p>If AI is introduced in the future, we will need to assess what information the feature requires and whether any data would be transmitted to an external provider.</p>
+      <p>Depending on the feature, this could require changes to the Privacy Policy and additional information for users.</p>
+      <p>We do not intend to send private study material to an AI provider without a clear, appropriate reason and suitable privacy safeguards.</p>
+      <p>The current absence of AI features does not mean that no automated software processes information. Authentication, database operations, and saving progress are ordinary technical functions that do not require generative AI.</p>
+
+      <h2>13. Data retention</h2>
+      <p>Knoodle keeps personal information for as long as necessary to provide the service and fulfil the purposes described in this policy.</p>
+      <p>For active accounts, this generally means retaining the information needed to provide account access, store study material, and maintain learning progress.</p>
+      <p>The exact retention period can differ depending on the type of information and the purpose for which it is held.</p>
+      <p>When data is no longer needed, it should be deleted or otherwise handled in accordance with applicable law.</p>
+      <p>Some technical logs or backup copies may remain temporarily after information is deleted from the main application database. The duration depends on the systems and retention arrangements involved.</p>
+      <p>Where information must be retained to comply with a legal obligation, that information may be kept for the required period.</p>
+      <p>We aim not to retain personal information indefinitely without a legitimate reason.</p>
+
+      <h2>14. Deleting your account and all associated data</h2>
+      <p>You should not have to send an email and wait for someone to manually delete your account just because you want to stop using a learning app.</p>
+      <p>Knoodle provides an account deletion option in the application's Settings for logged-in users.</p>
+      <p>When you choose the account deletion option and confirm the action, the deletion process is intended to remove your account and all associated learning data stored by Knoodle.</p>
+      <p>This includes information such as:</p>
+      <ul>
+        <li>Your Knoodle account and associated profile information.</li>
+        <li>Your email address as stored in the account system, subject to the deletion process.</li>
+        <li>Your username and nickname.</li>
+        <li>Your saved study decks and personal learning material.</li>
+        <li>Your saved learning progress.</li>
+        <li>Your exercise results and associated learning records.</li>
+        <li>Other personal information associated with your account that is held by Knoodle and can be deleted.</li>
+      </ul>
+      <p>The intention is that deleting your account also deletes your associated learning data, rather than leaving your study material behind in the database.</p>
+
+      <h3>What happens after deletion?</h3>
+      <p>Once deletion has been completed, you should no longer be able to log in to the deleted account or recover its deleted learning progress through that account.</p>
+      <p>Account deletion is intended to be permanent. If you decide to use Knoodle again later, you may need to create a new account and start again.</p>
+      <p>Certain technical records may remain temporarily in backups or security logs, where applicable. Data that must be retained for legal reasons may also be subject to limited exceptions. Such information should not be retained or used beyond what is necessary for the relevant purpose.</p>
+      <p>Deletion from the primary database and deletion from every backup system may not happen at exactly the same moment.</p>
+      <p>If you experience a problem with account deletion or believe some of your information remains accessible, contact <a href="mailto:kaier.chang@proton.me">kaier.chang@proton.me</a>.</p>
+      <p>We will review the request and help resolve the issue as appropriate.</p>
+
+      <h3>You do not need to explain why</h3>
+      <p>You do not need to provide a reason for wanting to delete your account.</p>
+      <p>You are free to stop using Knoodle whenever you want. Your personal data should not be held hostage to your continued use of the app.</p>
+
+      <h2>15. Your privacy rights under the GDPR</h2>
+      <p>If you are located in the European Economic Area and the GDPR applies to the processing of your personal information, you may have several rights.</p>
+      <p>These rights are subject to the conditions and exceptions established by law.</p>
+
+      <h3>Right of access</h3>
+      <p>You may request confirmation of whether Knoodle processes your personal information and ask for access to that information.</p>
+      <p>You may also request information about the purposes of processing, categories of data, relevant recipients, and applicable retention periods.</p>
+
+      <h3>Right to rectification</h3>
+      <p>If personal information associated with your account is inaccurate or incomplete, you may request that it be corrected.</p>
+      <p>Where possible, you may also be able to correct information directly through the app.</p>
+
+      <h3>Right to erasure</h3>
+      <p>You may request deletion of your personal information where the legal requirements for erasure are met.</p>
+      <p>You can also use the account deletion option in Settings to initiate deletion of your Knoodle account and associated learning data.</p>
+
+      <h3>Right to restriction</h3>
+      <p>In certain circumstances, you may request that the processing of your personal information be restricted.</p>
+      <p>For example, this may apply while the accuracy of information is being contested or an objection is being considered.</p>
+
+      <h3>Right to data portability</h3>
+      <p>Where the legal requirements apply, you may request a copy of personal information you have provided in a structured, commonly used, machine-readable format.</p>
+      <p>This right applies to particular types of processing and does not cover every category of information in every situation.</p>
+
+      <h3>Right to object</h3>
+      <p>You may have the right to object to processing based on legitimate interests where your particular situation gives rise to grounds for objection.</p>
+      <p>We will assess such requests in accordance with applicable law.</p>
+
+      <h3>Right to withdraw consent</h3>
+      <p>Where processing relies on your consent, you may withdraw that consent at any time.</p>
+      <p>Withdrawal does not affect the lawfulness of processing carried out before consent was withdrawn.</p>
+
+      <h3>Right to complain</h3>
+      <p>You have the right to lodge a complaint with a competent data protection supervisory authority if you believe your personal information is being processed unlawfully.</p>
+      <p>If you are in Germany, the relevant authority will generally depend on your place of residence or the circumstances of the case.</p>
+
+      <h3>How to exercise your rights</h3>
+      <p>You can contact us at:</p>
+      <p><strong><a href="mailto:kaier.chang@proton.me">kaier.chang@proton.me</a></strong></p>
+      <p>Please describe your request clearly. We may ask for reasonable information to verify that you are the account holder before disclosing or changing personal information.</p>
+      <p>We aim to respond within the time limits required by applicable data protection law.</p>
+
+      <h2>16. Children's privacy</h2>
+      <p>Knoodle is a learning platform that may be used by school students and younger learners.</p>
+      <p>We aim to minimise the information collected and avoid unnecessary profiling, advertising, or collection of unrelated personal details.</p>
+      <p>Where the GDPR applies, additional rules may apply to children's consent for information society services. The relevant requirements depend on the user's age, the legal basis for processing, and applicable national law.</p>
+      <p>If a user is too young to provide valid consent where consent is required, the appropriate parental authorisation may be necessary.</p>
+      <p>We do not intend to sell children's personal information or use their learning progress for targeted advertising.</p>
+      <p>Parents or legal guardians who have questions about a child's information may contact us using the email address above, subject to appropriate identity and authority checks.</p>
+
+      <h2>17. International transfers</h2>
+      <p>The Supabase project used by Knoodle is hosted in Europe.</p>
+      <p>However, certain service operations, technical support processes, or subprocessors may involve processing outside the European Economic Area, depending on the services and configuration involved.</p>
+      <p>Where personal information is transferred to a country outside the EEA and the GDPR requires safeguards, the applicable transfer requirements must be followed.</p>
+      <p>These may include an adequacy decision or appropriate safeguards such as standard contractual clauses, where relevant.</p>
+      <p>We aim to use service providers and configurations that support the appropriate protection of personal information.</p>
+
+      <h2>18. Security incidents</h2>
+      <p>Although Knoodle uses security measures such as Supabase authentication and database access policies, no online service can guarantee complete security.</p>
+      <p>An incident could arise from a software vulnerability, an incorrectly configured permission, compromised credentials, a service provider issue, or another technical problem.</p>
+      <p>If a personal data breach occurs, we will assess the incident and take appropriate steps to contain it, investigate the cause, and reduce the risk of further harm.</p>
+      <p>Where required by applicable law, we will notify the relevant supervisory authority and affected users within the applicable time limits.</p>
+      <p>If you believe your information has been exposed or accessed without permission, please contact <a href="mailto:kaier.chang@proton.me">kaier.chang@proton.me</a>.</p>
+      <p>We take security reports seriously and will review them as appropriate.</p>
+
+      <h2>19. Third-party services</h2>
+      <p>Knoodle currently relies on Supabase for authentication and cloud data storage.</p>
+      <p>Supabase is an independent service provider with its own terms, privacy policy, and technical infrastructure.</p>
+      <p>This policy does not replace Supabase's own privacy documentation. It explains how Knoodle uses the service as part of its application.</p>
+      <p>If Knoodle introduces other external providers in the future, such as analytics, error monitoring, cloud storage, or AI services, the information processed by those providers will need to be assessed.</p>
+      <p>This Privacy Policy may be updated to explain additional processing where appropriate.</p>
+
+      <h2>20. Changes to Knoodle and this policy</h2>
+      <p>Knoodle is currently in beta. Features may be added, removed, or changed as we develop the platform.</p>
+      <p>Changes to the application may affect what information is collected or how it is processed.</p>
+      <p>If a change affects this Privacy Policy, we will update the policy and revise the date at the top.</p>
+      <p>Where a change requires additional notice or consent under applicable law, we will take the appropriate steps.</p>
+      <p>We encourage users to review the policy occasionally, especially when major new features are introduced.</p>
+
+      <h2>21. Contact us</h2>
+      <p>If you have any questions about this Privacy Policy, how your data is handled, or your rights as a user, you can contact the Knoodle team at:</p>
+      <p><strong>Email:</strong> <a href="mailto:kaier.chang@proton.me">kaier.chang@proton.me</a></p>
+      <p>You can contact us about:</p>
+      <ul>
+        <li>Questions about what information Knoodle stores.</li>
+        <li>Requests to access or correct personal information.</li>
+        <li>Problems with account deletion.</li>
+        <li>Concerns about account security.</li>
+        <li>Requests relating to your data protection rights.</li>
+        <li>Suggestions for improving privacy and transparency.</li>
+      </ul>
+      <p>Please do not send your password by email. We will never need your readable password to respond to a privacy request.</p>
+
+      <h2>22. Our commitment</h2>
+      <p>Knoodle exists to help people learn things they can actually remember and use outside the app.</p>
+      <p>We want the platform to be useful without making users feel pressured to spend more time online, pay for basic features, or give up unnecessary personal information.</p>
+      <p>Your account and learning progress exist to support your learning. They are not intended to become a product that we sell to advertisers.</p>
+      <p>We will continue working to make Knoodle a platform where learning is accessible, your progress is meaningful, and your personal information is handled responsibly.</p>
+
+      <p style="margin-top: 40px; font-weight: 800; color: var(--primary); font-size: 18px;">Learn it. Know it. Knoodle it.</p>
+
+    </article>
+  </main>
+
+  <script>
+    // --- THEME LOGIC ---
+    var themeToggle = document.getElementById('theme-toggle');
+    var iconMoon = document.getElementById('icon-moon');
+    var iconSun = document.getElementById('icon-sun');
+    var root = document.documentElement;
+
+    function updateIcon(theme) {
+      if (theme === 'dark') { iconMoon.style.display = 'none'; iconSun.style.display = 'block'; }
+      else { iconMoon.style.display = 'block'; iconSun.style.display = 'none'; }
+    }
+
+    var savedTheme = 'light';
+    try {
+      if (localStorage.getItem('knoodle-theme')) savedTheme = localStorage.getItem('knoodle-theme');
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) savedTheme = 'dark';
+    } catch (e) {}
+    
+    root.setAttribute('data-theme', savedTheme);
+    updateIcon(savedTheme);
+
+    themeToggle.addEventListener('click', function() {
+      var newTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', newTheme);
+      updateIcon(newTheme);
+      try { localStorage.setItem('knoodle-theme', newTheme); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
