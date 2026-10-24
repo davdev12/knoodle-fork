@@ -7,6 +7,17 @@
   
   <link rel="icon" type="image/png" href="icon.png">
 
+  <script>
+    try {
+      var savedTheme = localStorage.getItem('knoodle-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
+
   <!-- Knoodle Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -279,14 +290,7 @@
       else { iconMoon.style.display = 'block'; iconSun.style.display = 'none'; }
     }
 
-    var savedTheme = 'light';
-    try {
-      if (localStorage.getItem('knoodle-theme')) savedTheme = localStorage.getItem('knoodle-theme');
-      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) savedTheme = 'dark';
-    } catch (e) {}
-    
-    root.setAttribute('data-theme', savedTheme);
-    updateIcon(savedTheme);
+    updateIcon(root.getAttribute('data-theme'));
 
     themeToggle.addEventListener('click', function() {
       var newTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
