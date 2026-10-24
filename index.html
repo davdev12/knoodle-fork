@@ -133,6 +133,44 @@
       letter-spacing: 0.2px;
     }
 
+    /* --- NEW NAV BUTTONS --- */
+    .nav-login,
+    .nav-signup {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-login {
+      color: var(--text-main);
+      padding: 8px 14px;
+      border-radius: var(--radius-c);
+    }
+
+    .nav-login:hover {
+      color: var(--primary);
+      background-color: var(--primary-light);
+    }
+
+    .nav-signup {
+      background: var(--primary);
+      color: var(--btn-text);
+      padding: 9px 18px;
+      border-radius: var(--radius-a);
+      box-shadow: 0 4px 10px rgba(221, 120, 96, 0.2);
+    }
+
+    .nav-signup:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(221, 120, 96, 0.3);
+    }
+    /* ------------------------ */
+
     .theme-toggle {
       background: var(--surface);
       border: 1.5px solid var(--border);
@@ -393,6 +431,26 @@
         padding: 24px;
       }
     }
+
+    /* --- MOBILE NAV ADJUSTMENTS --- */
+    @media (max-width: 480px) {
+      .nav-right {
+        gap: 9px;
+      }
+
+      .beta-pill {
+        display: none;
+      }
+
+      .nav-login,
+      .nav-signup {
+        font-size: 12px;
+      }
+
+      .nav-signup {
+        padding: 8px 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -405,6 +463,8 @@
     </a>
     <div class="nav-right">
       <span class="beta-pill">Beta</span>
+      <a class="nav-login" href="login.html">Log in</a>
+      <a class="nav-signup" href="login.html?mode=signup">Get started</a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
         <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
         <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
