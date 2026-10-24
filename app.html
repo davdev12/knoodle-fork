@@ -117,6 +117,29 @@
 
     .sidebar-footer {
       margin-top: auto; padding-top: 20px; border-top: 1px dashed var(--border);
+      display: flex; flex-direction: column; gap: 10px;
+    }
+
+    /* NEW: Legal Links */
+    .legal-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0 12px;
+      margin-bottom: 10px;
+    }
+
+    .legal-links a {
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .legal-links a:hover {
+      color: var(--primary);
+      text-decoration: underline;
     }
 
     .logout-btn {
@@ -308,6 +331,12 @@
     </div>
 
     <div class="sidebar-footer">
+      <!-- NEW: Legal Links -->
+      <div class="legal-links">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      
       <button type="button" class="logout-btn" id="logoutBtn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
         Log out
@@ -507,7 +536,6 @@
       document.getElementById('mainContent').style.display = 'block';
       document.getElementById('errorBanner').style.display = 'block';
       document.getElementById('errorMessage').textContent = message;
-      // is it correct???
       views.forEach(view => view.classList.remove('active'));
     }
 
@@ -554,7 +582,7 @@
       const displayName = profile?.display_name || "learner";
       const username = profile?.username || "user";
       const email = user.email || "Not available";
-      const joined = new Date(user.created_at).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+      const joined = new Date(user.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
       
       // Placeholders not real
       const xp = 0; 
