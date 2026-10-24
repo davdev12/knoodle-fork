@@ -264,6 +264,7 @@
       align-items: center;
       gap: 8px;
       cursor: pointer;
+      text-decoration: none; /* Added to prevent underline */
     }
 
     .cta-button:hover {
@@ -415,10 +416,10 @@
       font-weight: 700;
     }
 
-    /*.toast.show {
+    .toast.show {
       opacity: 1;
       transform: translate(-50%, 0);
-    }*/
+    }
 
     /* --- RESPONSIVE --- */
     @media (max-width: 600px) {
@@ -480,10 +481,11 @@
       <h1>Learn it. Know it.<br><span>Knoodle it.</span></h1>
       <p>Explore new ideas, discover what interests you, and make learning your own — one step at a time.</p>
 
-      <button class="cta-button" id="waitlist-btn">
-        Request Beta Access
+      <!-- Changed to <a> tag -->
+      <a class="cta-button" href="login.html">
+        Get Started
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
+      </a>
     </section>
 
     <!-- Features -->
@@ -591,6 +593,9 @@
       Released under the <a href="https://github.com/kaier99percent/knoodle/blob/main/LICENSE" target="_blank">BSD 3-Clause License</a>.
       Knoodle, the mascot, and logo are trademarks — <a href="https://github.com/kaier99percent/knoodle/blob/main/TRADEMARKS.md" target="_blank">see here</a>.
     </div>
+    <div style="margin-top: 8px;">
+      <a href="terms.html">Terms of Service</a> &middot; <a href="privacy.html">Privacy Policy</a>
+    </div>
   </footer>
 
   <div id="toast" class="toast"></div>
@@ -650,22 +655,7 @@
         });
       }
 
-      // --- request beta ---
-      const waitlistBtn = document.getElementById('waitlist-btn');
-      let toast = document.getElementById('toast');
-      let toastTimer;
-
-      if (waitlistBtn && toast) {
-        waitlistBtn.addEventListener('click', function() {
-          toast.textContent = "The beta is currently in work. Follow the GitHub repo or join the discord for updates!";
-          toast.classList.add('show');
-
-          clearTimeout(toastTimer);
-          toastTimer = setTimeout(function() {
-            toast.classList.remove('show');
-          }, 3500);
-        });
-      }
+      // The request beta acces has been removed!
 
     });
   </script>
