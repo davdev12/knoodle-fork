@@ -209,6 +209,37 @@
       transition: color 0.2s;
     }
     .back:hover { color: var(--primary); text-decoration: underline; }
+
+    /* --- NEW: Legal links --- */
+    .legal-footer {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
+
+    .legal-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .legal-footer a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .legal-footer .dot {
+      color: var(--text-muted);
+      opacity: 0.5;
+      font-weight: 400;
+    }
   </style>
 </head>
 <body>
@@ -272,6 +303,14 @@
 
     <p id="message" role="status" aria-live="polite"></p>
     <a class="back" href="index.html">← Back to Knoodle</a>
+
+    <!-- NEW: Legal links -->
+    <div class="legal-footer">
+      <a href="terms.html">Terms</a>
+      <span class="dot">·</span>
+      <a href="privacy.html">Privacy</a>
+    </div>
+
   </main>
 
   <!-- SUPABASE  -->
@@ -387,7 +426,7 @@
 
           if (data.session) {
             message.textContent = "Account created! You're now signed in.";
-            message.style.color = "var(--success-text)";
+            message.style.color = "var(--primary)";
           } else {
             message.textContent = "Account created! Check your email for a confirmation link.";
             message.style.color = "var(--primary)";
@@ -400,13 +439,12 @@
 
           if (error) throw error;
 
-message.textContent = "You're logged in! Redirecting...";
-message.style.color = "var(--primary)";
+          message.textContent = "You're logged in! Redirecting...";
+          message.style.color = "var(--primary)";
 
-setTimeout(() => {
-  window.location.href = "app.html";
-}, 1000);
-
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 1000);
         }
       } catch (error) {
         message.textContent = error.message || "Something went wrong. Please try again.";
