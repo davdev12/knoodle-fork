@@ -240,6 +240,57 @@
       opacity: 0.5;
       font-weight: 400;
     }
+
+    /* --- NEW: Password Toggle & Checkbox Styles --- */
+    .password-wrapper {
+      position: relative;
+    }
+    .password-wrapper input {
+      padding-right: 45px;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    .toggle-password:hover {
+      color: var(--primary);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .checkbox-group input {
+      width: auto;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+    .checkbox-group label {
+      margin: 0;
+      text-transform: none;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+    .checkbox-group a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .checkbox-group a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -296,7 +347,18 @@
       <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
 
       <label for="password">Password</label>
-      <input id="password" type="password" autocomplete="current-password" minlength="6" placeholder="Your password" required>
+      <div class="password-wrapper">
+        <input id="password" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required>
+        <button type="button" class="toggle-password" id="togglePassword" aria-label="Show password">
+          <svg id="eye-closed" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+          <svg id="eye-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </button>
+      </div>
+
+      <div class="checkbox-group" id="termsGroup" hidden>
+        <input type="checkbox" id="termsCheck" required>
+        <label for="termsCheck">I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.</label>
+      </div>
 
       <button class="submit" id="submitButton" type="submit">Log in</button>
     </form>
@@ -338,6 +400,19 @@
       try { localStorage.setItem('knoodle-theme', newTheme); } catch (e) {}
     });
 
+    // --- Password Toggle Logic ---
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    const eyeOpen = document.getElementById('eye-open');
+    const eyeClosed = document.getElementById('eye-closed');
+
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      eyeOpen.style.display = type === 'text' ? 'block' : 'none';
+      eyeClosed.style.display = type === 'text' ? 'none' : 'block';
+    });
+
     // --- Auth logiccc ---
     const form = document.getElementById("authForm");
     const loginTab = document.getElementById("loginTab");
@@ -345,7 +420,6 @@
     const heading = document.getElementById("heading");
     const subtitle = document.getElementById("subtitle");
     const submitButton = document.getElementById("submitButton");
-    const passwordInput = document.getElementById("password");
     const message = document.getElementById("message");
 
     let mode = "login";
@@ -368,9 +442,11 @@
       
       // show hide
       document.getElementById("signupFields").hidden = isLogin;
+      document.getElementById("termsGroup").hidden = isLogin;
 
       document.getElementById("username").required = !isLogin;
       document.getElementById("displayName").required = !isLogin;
+      document.getElementById("termsCheck").required = !isLogin;
     }
 
     loginTab.addEventListener("click", () => setMode("login"));
@@ -414,7 +490,8 @@
             email,
             password,
             options: {
-              emailRedirectTo: window.location.origin + "/login.html",
+              // Updated this to point straight to the dashboard after email confirmation
+              emailRedirectTo: window.location.origin + "/dashboard.html",
               data: {
                 username: username,
                 display_name: displayName
@@ -424,13 +501,10 @@
 
           if (error) throw error;
 
-          if (data.session) {
-            message.textContent = "Account created! You're now signed in.";
-            message.style.color = "var(--primary)";
-          } else {
-            message.textContent = "Account created! Check your email for a confirmation link.";
-            message.style.color = "var(--primary)";
-          }
+          // We removed the instant redirect. Now it ALWAYS tells them to check their email.
+          message.textContent = "Account created! Check your email to confirm, then you'll be redirected to your dashboard.";
+          message.style.color = "var(--primary)";
+          
         } else {
           const { error } = await supabaseClient.auth.signInWithPassword({
             email,
@@ -454,6 +528,17 @@
         submitButton.textContent = mode === "login" ? "Log in" : "Create account";
       }
     });
+
+    // --- Skip login if already signed in ---
+    async function checkSession() {
+      if (window.supabaseClient) {
+        const { data } = await supabaseClient.auth.getSession();
+        if (data && data.session) {
+          window.location.replace("dashboard.html");
+        }
+      }
+    }
+    checkSession();
   </script>
 </body>
 </html>
