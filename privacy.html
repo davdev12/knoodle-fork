@@ -6,6 +6,17 @@
   <title>Privacy Policy — Knoodle</title>
 
   <link rel="icon" type="image/png" href="icon.png">
+  
+  <script>
+    try {
+      var savedTheme = localStorage.getItem('knoodle-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
 
   <!-- Knoodle Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,6 +191,31 @@
 
     .contact-box p { margin-bottom: 0; color: var(--text-main); }
     .contact-box strong { display: block; font-size: 20px; margin-top: 5px; }
+
+    /* --- BUTTON TO JUMP --- */
+    .jump-link {
+      display: block;
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1.5px dashed var(--border);
+    }
+    .jump-link a {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 12px 24px;
+      border-radius: var(--radius-a);
+      font-weight: 800;
+      border: 1.5px solid var(--icon-border);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .jump-link a:hover {
+      background: var(--primary);
+      color: var(--btn-text);
+      transform: translateY(-2px);
+    }
 
     @media (max-width: 600px) {
       .document-card { padding: 30px 20px; }
@@ -523,6 +559,11 @@
 
       <p style="margin-top: 40px; font-weight: 800; color: var(--primary); font-size: 18px;">Learn it. Know it. Knoodle it.</p>
 
+      <!-- JUMP TO TERMS BUTTON -->
+      <div class="jump-link">
+        <a href="terms.html">Read our Terms of Service →</a>
+      </div>
+
     </article>
   </main>
 
@@ -537,15 +578,7 @@
       if (theme === 'dark') { iconMoon.style.display = 'none'; iconSun.style.display = 'block'; }
       else { iconMoon.style.display = 'block'; iconSun.style.display = 'none'; }
     }
-
-    var savedTheme = 'light';
-    try {
-      if (localStorage.getItem('knoodle-theme')) savedTheme = localStorage.getItem('knoodle-theme');
-      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) savedTheme = 'dark';
-    } catch (e) {}
-    
-    root.setAttribute('data-theme', savedTheme);
-    updateIcon(savedTheme);
+    updateIcon(root.getAttribute('data-theme'));
 
     themeToggle.addEventListener('click', function() {
       var newTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
